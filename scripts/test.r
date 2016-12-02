@@ -1,11 +1,9 @@
 #Created by Jesse:
 library(jsonlite)
 library(dplyr)
-
 library(shiny)
-library(dplyr)
 library(httr)
-# Auth. Key
+
 app_id <- "1850413891841129"
 
 #AMS auth
@@ -29,7 +27,7 @@ if (need_new > 0)  {
 
 token <- auth_response$token
 
-ams_req <- POST(paste0(base, "text?", "source=TWEET", "&interpretations=true"),
+ams_req <- POST(paste0(base, "text?", "source=TWEET"),
                 add_headers("X-Auth-Token"=token,
                             "Content-type"="application/json"),
                 body='ISIS is taking credit for the terrible stabbing attack 
