@@ -9,7 +9,7 @@ app_id <- "1850413891841129"
 #AMS auth
 customer_id <- '2557'
 api_key <- 'hb2r82i8saloj1ectsfsi5omlq'
-need_new <- 0
+need_new <- 1
 
 base <- "http://api-v2.applymagicsauce.com/"
 if (need_new > 0)  {
