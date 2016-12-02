@@ -6,8 +6,6 @@ library(devtools)
 install_github("geoffjentry/twitteR")
 library(twitteR)
 
-app_id <- "1850413891841129"
-
 #AMS auth
 customer_id <- '2557'
 api_key <- 'hb2r82i8saloj1ectsfsi5omlq'
@@ -38,10 +36,9 @@ ams_req <- POST(paste0(ams_base, "text?", "source=TWEET"),
                 not have been in our country.')
 ams_resp <- content(ams_req)
 
-#twitter api key: RIXgPEn59oOUm2qn5WBQX2sW1
-#twitter api secret: 70qPb7pp7mQCOjRPU3jP7kxhu4N91vavVupBvih08Bp3aHrkXN
-#twitter acces token: 	4081108513-Lj3BaXetniCt09A1uvn4U5YFZGSM1JQHiyapjfq
-#twitter access secret: S1YtKDOJIXDj2ARejfFv3tbx8OmBVFUHgStiCoLBdwOGr
+api_key <- "RIXgPEn59oOUm2qn5WBQX2sW1"
+api_secret <- "70qPb7pp7mQCOjRPU3jP7kxhu4N91vavVupBvih08Bp3aHrkXN"
+access_token <- "4081108513-Lj3BaXetniCt09A1uvn4U5YFZGSM1JQHiyapjfq"
+access_token_secret <- "S1YtKDOJIXDj2ARejfFv3tbx8OmBVFUHgStiCoLBdwOGr"
 
-twitter_auth_req <- POST('https://api.twitter.com/oauth2/token',
-                         )
+setup_twitter_oauth(api_key,api_secret,access_token,access_token_secret)
