@@ -1,7 +1,6 @@
 library(jsonlite)
 library(shiny)
 library(dplyr)
-library(httr)
 
 # Auth. Key
 app_id <- "1850413891841129"
