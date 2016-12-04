@@ -51,8 +51,9 @@ GenerateAuthTokenAMS <- function(need_new) {
     } else {
       return(content(ams_auth_req)$token)
     }
-  } else {
-    return(content(ams_auth_req)$token)
+  } else {}
+    tryCatch(expr = return(content(ams_auth_req)$token),
+             finally = return(GenerateAuthTokenAMS(TRUE))
   }
 }
 token <- GenerateAuthTokenAMS(need_new)
