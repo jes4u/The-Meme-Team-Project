@@ -18,19 +18,22 @@ SetupTwitterOauth <- function() {
                       t_access_token,
                       t_access_token_secret)
 }
+
+###You need to uncomment this line of code the first time you run it, then recomment###
 #SetupTwitterOauth()
 
-#Get Tweets(list)
+#Get Tweets
 GetTweets <- function(t_handle) {
   t_user <- getUser(t_handle)
-  timeline <- userTimeline(t_user, n=11)
+  timeline <- userTimeline(t_user)
   tweets <- c()
-  for (i in seq(10)) {
+  for (i in seq(length(timeline))) {
     tweets <- c(tweets, timeline[[i]]$text)
   }
   return(toString(tweets))
 }
-tweets <- GetTweets('@realDonaldTrump')
+tweets1 <- GetTweets('@realDonaldTrump')
+tweets2 <- GetTweets('@barrecan')
 
 #AMS
 ###############################################################################
@@ -40,7 +43,6 @@ ams_api_key <- 'hb2r82i8saloj1ectsfsi5omlq'
 need_new <- FALSE
 
 #Auth
-GenerateAuthTokenAMS <- function(need_new) {
   if (need_new == TRUE)  {
     ams_auth_req <- POST(paste0(ams_base, "auth"), 
                          add_headers("Content-Type"="application/json"), 
@@ -48,30 +50,25 @@ GenerateAuthTokenAMS <- function(need_new) {
                                   "api_key": "hb2r82i8saloj1ectsfsi5omlq"}')
     if (ams_auth_req$status_code != 200) {
       print("Bad key/id")
-    } else {
-      return(content(ams_auth_req)$token)
     }
-  } else {}
-    tryCatch(expr = return(content(ams_auth_req)$token),
-             finally = return(GenerateAuthTokenAMS(TRUE))
   }
-}
-token <- GenerateAuthTokenAMS(need_new)
+token <- content(ams_auth_req)$token
 
-#Request
-RequestAMS <- function(token) {
+#Request & response
+RequestAMS <- function(token, tweets) {
   request <- POST(paste0(ams_base, "text?", "source=TWEET"),
                   add_headers("X-Auth-Token"=token,
                               "Content-type"="application/json"),
                   body=tweets)
 }
-ams_req <- RequestAMS(token)
 if (ams_req$status_code != 200) {
   need_new <- TRUE
   token <- GenerateAuthTokenAMS(need_new)
-  ams_req <- RequestAMS(token)
+  ams_req <- RequestAMS(token, tweets)
 }
-ams_resp <- content(ams_req)
+ams_resp1 <- RequestAMS(token=token, tweets=tweets1)
+ams_resp2 <- RequestAMS(token=token, tweets=tweets2)
 
-#Data
-ams_data <- DataRequestAMS(token=token, tweets=tweets)
+#Data, sweet data.
+ams_data1 <- content(ams_resp1)
+ams_data2 <- content(ams_resp2)
