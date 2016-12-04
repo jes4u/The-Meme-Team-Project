@@ -32,6 +32,8 @@ GetTweets <- function(t_handle) {
   }
   return(toString(tweets))
 }
+
+#Enter names
 tweets1 <- GetTweets('@realDonaldTrump')
 tweets2 <- GetTweets('@barrecan')
 
@@ -41,36 +43,46 @@ ams_base <- "http://api-v2.applymagicsauce.com/"
 ams_customer_id <- '2557'
 ams_api_key <- 'hb2r82i8saloj1ectsfsi5omlq'
 
-###Change this to true if it says the token is expired, run it, then switch it back###
-need_new <- FALSE
+#Initial Auth
+ams_auth_req <- POST(paste0(ams_base, "auth"), 
+                     add_headers("Content-Type"="application/json"), 
+                     body = '{"customer_id": 2557, 
+                              "api_key": "hb2r82i8saloj1ectsfsi5omlq"}')
+if (ams_auth_req$status_code != 200) {
+  print("Bad key/id")
+}
+token <- content(ams_auth_req)$token
 
-#Auth
-  if (need_new == TRUE)  {
+#Request
+RequestAMS <- function(token='uuj6skmeji1km2ecodfv0nsptf', tweets) {
+  request <- POST(paste0(ams_base, "text?", "source=TWEET"),
+                  add_headers("X-Auth-Token"=token,
+                              "Content-type"="application/json"),
+                  body=tweets)
+  if (request$status_code == 403) {
+    ###Redundant, find more elegant solution###
     ams_auth_req <- POST(paste0(ams_base, "auth"), 
                          add_headers("Content-Type"="application/json"), 
                          body = '{"customer_id": 2557, 
                                   "api_key": "hb2r82i8saloj1ectsfsi5omlq"}')
     if (ams_auth_req$status_code != 200) {
-      print("Bad key/id")
+      return("Bad key/id")
+    } else {
+      token <- content(ams_auth_req)$token
+      request <- RequestAMS(token, tweets)
     }
   }
-token <- content(ams_auth_req)$token
+  return(request)
+}
 
-#Request & response
-RequestAMS <- function(token, tweets) {
-  request <- POST(paste0(ams_base, "text?", "source=TWEET"),
-                  add_headers("X-Auth-Token"=token,
-                              "Content-type"="application/json"),
-                  body=tweets)
-}
-if (ams_req$status_code != 200) {
-  need_new <- TRUE
-  token <- GenerateAuthTokenAMS(need_new)
-  ams_req <- RequestAMS(token, tweets)
-}
+#Response
 ams_resp1 <- RequestAMS(token=token, tweets=tweets1)
 ams_resp2 <- RequestAMS(token=token, tweets=tweets2)
 
 #Data, sweet data.
 ams_data1 <- content(ams_resp1)
 ams_data2 <- content(ams_resp2)
+
+#Poorly constructed data frames
+ams_data_frame1 <- as.data.frame(ams_data1$predictions)
+ams_data_frame2 <- as.data.frame(ams_data2$predictions)
