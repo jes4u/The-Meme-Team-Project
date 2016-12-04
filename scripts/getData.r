@@ -60,11 +60,17 @@ RequestAMS <- function(token, tweets) {
                   add_headers("X-Auth-Token"=token,
                               "Content-type"="application/json"),
                   body=tweets)
-}
-if (ams_req$status_code != 200) {
-  need_new <- TRUE
-  token <- GenerateAuthTokenAMS(need_new)
-  ams_req <- RequestAMS(token, tweets)
+  if (request$status_code != 200) {
+    need_new <- TRUE
+    ###Redundant code, fix with try/catch###
+    ams_auth_req <- POST(paste0(ams_base, "auth"), 
+                  add_headers("Content-Type"="application/json"), 
+                  body = '{"customer_id": 2557, 
+                           "api_key": "hb2r82i8saloj1ectsfsi5omlq"}')
+    if (ams_auth_req$status_code != 200) {
+      print("Bad key/id")
+    }
+  }
 }
 ams_resp1 <- RequestAMS(token=token, tweets=tweets1)
 ams_resp2 <- RequestAMS(token=token, tweets=tweets2)
@@ -72,3 +78,7 @@ ams_resp2 <- RequestAMS(token=token, tweets=tweets2)
 #Data, sweet data.
 ams_data1 <- content(ams_resp1)
 ams_data2 <- content(ams_resp2)
+
+#Poorly organized data frames
+ams_data_frame1 <- as.data.frame(ams_data1$predictions)
+ams_data_frame2 <- as.data.frame(ams_data2$predictions)
