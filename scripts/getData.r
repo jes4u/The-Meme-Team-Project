@@ -40,6 +40,8 @@ tweets2 <- GetTweets('@barrecan')
 ams_base <- "http://api-v2.applymagicsauce.com/"
 ams_customer_id <- '2557'
 ams_api_key <- 'hb2r82i8saloj1ectsfsi5omlq'
+
+###Change this to true if it says the token is expired, run it, then switch it back###
 need_new <- FALSE
 
 #Auth
