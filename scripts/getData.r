@@ -5,6 +5,10 @@ library(httr)
 library(devtools)
 library(twitteR)
 
+#Input twitter handles
+user1 <- '@realDonaldTrump'
+user2 <- '@barrecan'
+
 #Twitter
 ###############################################################################
 t_api_key <- "RIXgPEn59oOUm2qn5WBQX2sW1"
@@ -32,10 +36,8 @@ GetTweets <- function(t_handle) {
   }
   return(toString(tweets))
 }
-
-#Enter names
-tweets1 <- GetTweets('@realDonaldTrump')
-tweets2 <- GetTweets('@barrecan')
+tweets1 <- GetTweets(user1)
+tweets2 <- GetTweets(user2)
 
 #AMS
 ###############################################################################
@@ -84,8 +86,11 @@ ams_data1 <- content(ams_resp1)
 ams_data2 <- content(ams_resp2)
 
 #Poorly constructed data frames
+##User1
 predictions1 <- as.data.frame(ams_data1$predictions)
-predictions2 <- as.data.frame(ams_data2$predictions)
 interpretations1 <- as.data.frame(ams_data1$interpretations)
+
+##User2
+predictions2 <- as.data.frame(ams_data2$predictions)
 interpretations2 <- as.data.frame(ams_data2$interpretations)
 
