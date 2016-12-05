@@ -1,5 +1,6 @@
 ## setwed()
 ## source()
+library(dplry)
 
 dm <- function(ams_data_frame1) {
   colnames(ams_data_frame1)[7] <- "age"
