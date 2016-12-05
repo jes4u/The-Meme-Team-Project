@@ -55,7 +55,7 @@ token <- content(ams_auth_req)$token
 
 #Request
 RequestAMS <- function(token='uuj6skmeji1km2ecodfv0nsptf', tweets) {
-  request <- POST(paste0(ams_base, "text?", "source=TWEET"),
+  request <- POST(paste0(ams_base, "text?", "source=TWEET", "&interpretations=true"),
                   add_headers("X-Auth-Token"=token,
                               "Content-type"="application/json"),
                   body=tweets)
@@ -84,5 +84,8 @@ ams_data1 <- content(ams_resp1)
 ams_data2 <- content(ams_resp2)
 
 #Poorly constructed data frames
-ams_data_frame1 <- as.data.frame(ams_data1$predictions)
-ams_data_frame2 <- as.data.frame(ams_data2$predictions)
+predictions1 <- as.data.frame(ams_data1$predictions)
+predictions2 <- as.data.frame(ams_data2$predictions)
+interpretations1 <- as.data.frame(ams_data1$interpretations)
+interpretations2 <- as.data.frame(ams_data2$interpretations)
+
