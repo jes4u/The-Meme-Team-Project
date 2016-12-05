@@ -7,11 +7,10 @@ shinyUI(fluidPage(theme = "bootstrap.css",
   titlePanel("The Meme Team - Compatibility Test"),
     hr(),
     # Show a plot of the generated distribution
-    mainPanel(
-      sidebarPanel(
-        textInput("user1", label = h3("User 1 Twitter Handle"), value = "@"),
-        textInput("user2", label = h3("User 2 Twitter Handle"), value = "@")
-      )
+    mainPanel("Enter twitter usernames separated by commas.",
+      tags$textarea(id="users", rows=3, cols=40, 
+                    "samsturtevant, zuzr"),
+      textOutput("users")
     )
   )
 )
