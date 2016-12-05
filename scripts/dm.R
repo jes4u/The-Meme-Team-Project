@@ -1,11 +1,11 @@
-library(jsonlite)
-library(dplyr)
-library(shiny)
-library(httr)
-library(devtools)
-library(twitteR)
-source("~/desktop/Aut16/INFO 201/The-Meme-Team-Project/scripts/getData.r")
+## setwed()
+## source()
+
 dm <- function(ams_data_frame1) {
+  colnames(ams_data_frame1)[7] <- "age"
+  colnames(ams_data_frame1)[9] <- "gender"
+  colnames(ams_data_frame1)[8] <- "age_num"
+  colnames(ams_data_frame1)[10] <- "gender_prob"
   value <- select(ams_data_frame1, contains("value")) %>%
   t()
   rownames(value) <- c()
