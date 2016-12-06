@@ -6,6 +6,12 @@ library(devtools)
 library(twitteR)
 #Twitter#######################################################################
 
+###Remove when finished###
+setup_twitter_oauth(t_api_key,
+                    t_api_secret,
+                    t_access_token,
+                    t_access_token_secret)
+
 #Get Tweets by twitter handle
 GetTweets <- function(t_handle) {
   t_user <- getUser(t_handle)
