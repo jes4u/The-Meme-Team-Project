@@ -8,6 +8,8 @@ library(twitteR)
 #Input twitter handles
 user1 <- '@realDonaldTrump'
 user2 <- '@barrecan'
+user3 <- '@BarackObama'
+user4 <- '@TheEllenShow'
 
 #Twitter
 ###############################################################################
@@ -38,6 +40,8 @@ GetTweets <- function(t_handle) {
 }
 tweets1 <- GetTweets(user1)
 tweets2 <- GetTweets(user2)
+tweets3 <- GetTweets(user3)
+tweets4 <- GetTweets(user4)
 
 #AMS
 ###############################################################################
@@ -80,10 +84,14 @@ RequestAMS <- function(token='uuj6skmeji1km2ecodfv0nsptf', tweets) {
 #Response
 ams_resp1 <- RequestAMS(token=token, tweets=tweets1)
 ams_resp2 <- RequestAMS(token=token, tweets=tweets2)
+ams_resp3 <- RequestAMS(token=token, tweets=tweets3)
+ams_resp4 <- RequestAMS(token=token, tweets=tweets4)
 
 #Data, sweet data.
 ams_data1 <- content(ams_resp1)
 ams_data2 <- content(ams_resp2)
+ams_data3 <- content(ams_resp3)
+ams_data4 <- content(ams_resp4)
 
 #Poorly constructed data frames
 ##User1
@@ -94,3 +102,10 @@ interpretations1 <- as.data.frame(ams_data1$interpretations)
 predictions2 <- as.data.frame(ams_data2$predictions)
 interpretations2 <- as.data.frame(ams_data2$interpretations)
 
+##User3
+predictions3 <- as.data.frame(ams_data3$predictions)
+interpretations3 <- as.data.frame(ams_data3$interpretations)
+
+##User 4
+predictions4 <- as.data.frame(ams_data4$predictions)
+interpretations4 <- as.data.frame(ams_data4$interpretations)
