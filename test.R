@@ -16,5 +16,6 @@ source('./scripts/dm.R')
 source('./scripts/getData.r')
 source('./scripts/getWordCloud.r')
 
-users <- c('@RealDonaldTrump', '@samsturtevant', '@realbencarson')
+users <- c('@RealDonaldTrump', '@samsturtevant')
 
+View(GetBig5DF(GetPredDF(GetData(users[1])), GetPredDF(GetData(users[2]))))
