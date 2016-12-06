@@ -12,6 +12,7 @@ GetBig5DF <- function(pred_df) {
   pred_df <- pred_df %>% select(-contains("3"), -contains("4"))
   data <- pred_df %>% select(contains("value"))
   df[1,] <- data
+  df <- rbind(rep(5,5) , rep(0,5) , data)
   return(df)
 }
 
