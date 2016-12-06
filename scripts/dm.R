@@ -1,37 +1,15 @@
-## source()
-
 library(dplyr)
 
-#Creates big5 df for all predictions dfs passed in
-Big5 <- function(pred1, 
-                 pred2=NULL, 
-                 pred3=NULL,
-                 pred4=NULL) {
-  df <- data.frame(matrix(nrow = 1, ncol = 5))
+Big5 <- function(predictions, num_users) {
+  df <- data.frame(matrix(nrow = num_users, ncol = 5))
+  predictions <- predictions %>% select(-contains("3"), -contains("4"))
   colnames(df) <- c("Openness",
                     "Extraversion",
                     "Agreeableness",
                     "Neuroticism",
                     "Conscientiousness")
-  pred1 <- pred1 %>% select(-contains("3"), -contains("4"))
-  data <- predictions1 %>% select(contains("value"))
-  df[1,] <- data
-  if (!is.null(pred2)) {
-    pred2 <- pred2 %>% select(-contains("3"), -contains("4"))
-    data <- predictions2 %>% select(contains("value"))
-    df[2,] <- data
-  }
-  if (!is.null(pred3)) {
-    pred3 <- pred3 %>% select(-contains("3"), -contains("4"))
-    data <- predictions3 %>% select(contains("value"))
-    df[3,] <- data
-  }
-  if (!is.null(pred4)) {
-    pred4 <- pred4 %>% select(-contains("3"), -contains("4"))
-    data <- predictions4 %>% select(contains("value"))
-    df[4,] <- data
-  }
   df <- rbind(rep(1, 5), rep(0, 5), df)
+  data <- predictions %>% select(contains("value"))
+  df[3,] <- data
   return(df)
 }
-test <- Big5(predictions1, predictions2, predictions3, predictions4)
