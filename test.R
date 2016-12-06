@@ -1,0 +1,20 @@
+library(dplyr)
+library(jsonlite)
+library(dplyr)
+library(shiny)
+library(httr)
+library(devtools)
+library(twitteR)
+library(wordcloud)
+library(randomcoloR)
+library(RColorBrewer)
+library(tm)
+
+source('./server.R')
+source('./ui.R')
+source('./scripts/dm.R')
+source('./scripts/getData.r')
+source('./scripts/getWordCloud.r')
+
+users <- c('@RealDonaldTrump', '@samsturtevant', '@realbencarson')
+

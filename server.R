@@ -21,10 +21,10 @@ shinyServer(function(input, output) {
   t_access_token <- "4081108513-Lj3BaXetniCt09A1uvn4U5YFZGSM1JQHiyapjfq"
   t_access_token_secret <- "S1YtKDOJIXDj2ARejfFv3tbx8OmBVFUHgStiCoLBdwOGr"
   
-  setup_twitter_oauth(t_api_key,
-                      t_api_secret,
-                      t_access_token,
-                      t_access_token_secret)
+  # setup_twitter_oauth(t_api_key,
+  #                     t_api_secret,
+  #                     t_access_token,
+  #                     t_access_token_secret)
   
   ams_base <- "http://api-v2.applymagicsauce.com/"
   ams_customer_id <- '2557'
