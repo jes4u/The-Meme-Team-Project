@@ -1,5 +1,3 @@
-source('./scripts/getData.r')
-
 library(dplyr)
 library(wordcloud)
 library(randomcoloR)
@@ -19,4 +17,3 @@ getWordMap <- function(tweets) {
   return(cloud)
 
 }
-getWordMap(GetTweets('@RealDonaldTrump'))
