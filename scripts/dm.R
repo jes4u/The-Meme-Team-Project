@@ -2,12 +2,15 @@ library(dplyr)
 
 #Creates big5 df for a prediction df
 
-GetBig5DF <- function(pred_df) {
+
+GetBig5DF <- function(pred_df1, pred_df2) {
   df <- data.frame(matrix(nrow = 1, ncol = 5))
-  pred_df <- pred_df %>% select(-contains("3"), -contains("4"))
-  data <- pred_df %>% select(contains("value"))
-  df[1,] <- data
-  df <- rbind(rep(1,5) , rep(0,5) , data)
+  pred_df1 <- pred_df1 %>% select(-contains("3"), -contains("4"))
+  pred_df2 <- pred_df2 %>% select(-contains("3"), -contains("4"))
+  data1 <- pred_df1 %>% select(contains("value"))
+  data2 <- pred_df2 %>% select(contains("value"))
+  #df[1,] <- data
+  df <- rbind(rep(1,5) , rep(0,5) , data1, data2)
   colnames(df) <- c("Openness",
                     "Extraversion",
                     "Agreeableness",
