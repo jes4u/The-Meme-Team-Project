@@ -18,4 +18,6 @@ source('./scripts/getWordCloud.r')
 
 users <- c('@RealDonaldTrump', '@samsturtevant')
 
-View(GetBig5DF(GetPredDF(GetData(users[1])), GetPredDF(GetData(users[2]))))
+spider_data <- GetBig5DF(GetPredDF(GetData(users[1])), GetPredDF(GetData(users[2])))
+other_data1 <- GetOtherDF(GetPredDF(GetData(users[1])), GetIntDF(GetData(users[1])))
+other_data2 <- GetOtherDF(GetPredDF(GetData(users[2])), GetIntDF(GetData(users[2])))
