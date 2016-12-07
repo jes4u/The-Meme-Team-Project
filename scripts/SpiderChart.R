@@ -29,5 +29,6 @@ radarchart( data  , axistype=1 ,
             #custom labels
             vlcex=0.8 
 )
-legend(x=0.7, y=1, legend = rownames(data[-c(1,2),]),
-       bty = "n", pch=20 , col=colors_in , text.col = "grey", cex=1.2, pt.cex=3)
+person <- c("person1", "person2")
+legend(x=1, y=1, legend = person, bty = "n",
+       pch=20 , col=colors_in , text.col = "grey", cex=1.2, pt.cex=3)
