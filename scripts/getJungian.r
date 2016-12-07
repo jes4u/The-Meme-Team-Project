@@ -1,4 +1,5 @@
-source('./getData.r')
+#source('./getData.r')
+library(knitr)
 
 getJungian <- function(t_handle){
   
@@ -36,5 +37,5 @@ getJungian <- function(t_handle){
   rownames(df) <- df[,1]
   df[,1] <- NULL
   
-  return(df)
+  return(kable(df))
 }
