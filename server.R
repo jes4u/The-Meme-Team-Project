@@ -16,6 +16,7 @@ source('./scripts/getData.R')
 source('./scripts/dm.R')
 source('./scripts/getJungian.R')
 source('./scripts/getWordCloud.R')
+source('./scripts/SpiderChart.R')
 
 # Twitter Oauth (Calls once when you publish the app)########################################################
     t_api_key <- "RIXgPEn59oOUm2qn5WBQX2sW1"
@@ -64,7 +65,7 @@ source('./scripts/getWordCloud.R')
     })
     
     output$spider_chart <- renderPlot({
-      return(spiderChart(GetData(input$t_handle_5)))
+      return(spiderChart(as.data.frame(GetData(input$t_handle_3))))
     })
     
     

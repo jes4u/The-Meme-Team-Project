@@ -68,7 +68,7 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                               mainPanel(
                                 
                                 # Insert spider map
-
+                                plotOutput("spider_chart")
                                 # ,
                                 # hr()
                                 # ,
@@ -109,7 +109,7 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                               mainPanel(
                                 
                                 # Insert spider map
-                                plotOutput("spider_chart")
+                                
                                 # ,
                                 # hr()
                                 # ,
