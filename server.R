@@ -63,6 +63,10 @@ source('./scripts/getWordCloud.R')
       return(getJungian(input$t_handle))
     })
     
+    output$spider_chart <- renderPlot({
+      return(spiderChart(GetData(input$t_handle_5)))
+    })
+    
     
     #Continuously calls when in app ###############################
   })
