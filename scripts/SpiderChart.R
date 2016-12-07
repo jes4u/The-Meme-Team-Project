@@ -5,16 +5,14 @@ radarchart(data)
 
 # pass in data frame as data. This code returns a spider chart of one person.
 
-radarchart( data, axistype=1, 
-
-#custom polygon
-pcol=rgb(0.2,0.5,0.5,0.9) , pfcol=rgb(0.2,0.5,0.5,0.5) , plwd=4 , 
-
-#custom the grid
-cglcol="grey", cglty=1, axislabcol="grey", caxislabels=seq(0,1,0.2), cglwd=0.8,
-
-#custom labels
-vlcex=0.8, 
+radarchart(data, axistype=1, 
+           #custom polygon
+           pcol=rgb(0.2,0.5,0.5,0.9) , pfcol=rgb(0.2,0.5,0.5,0.5) , plwd=4 , 
+           #custom the grid
+           cglcol="grey", cglty=1, axislabcol="grey", caxislabels=seq(0,1,0.2), cglwd=0.8,
+           #custom labels
+           vlcex=0.8
+)  
 
 
 # pass in data frame to data. This code returns a spider chart that compares two people.
@@ -28,8 +26,8 @@ radarchart( data , axistype=1 ,
             cglcol="grey", cglty=1, axislabcol="grey", caxislabels=seq(0,1,0.2), cglwd=0.8,
             #custom labels
             vlcex=0.8 
-)
-)
+            )
+            )
 person <- c("person1", "person2")
 legend(x=1, y=1, legend = person, bty = "n",
        pch=20 , col=colors_in , text.col = "grey", cex=1.2, pt.cex=3)
