@@ -59,7 +59,7 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                 
                                 ,
                                 
-                                textInput("t_handle_3", 
+                                textInput("t_handle_4", 
                                           label = h3("Input a Second Twitter Handle"), 
                                           value = '@HillaryClinton')
                                 
@@ -84,7 +84,46 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                             # close tabpanel        
                    )
                                
-                               
+                   ,
+                   
+                   tabPanel('Compatability',
+                            
+                            titlePanel('TEST YOUR COMPATABILITY'),
+                            
+                            sidebarLayout(
+                              
+                              sidebarPanel(
+                                
+                                textInput("t_handle_5", 
+                                          label = h3("Input a Twitter Handle"), 
+                                          value = '@realDonaldTrump')
+                                
+                                ,
+                                
+                                textInput("t_handle_6", 
+                                          label = h3("Input a Second Twitter Handle"), 
+                                          value = '@HillaryClinton')
+                                
+                              ),
+                              
+                              mainPanel(
+                                
+                                # Insert spider map
+                                
+                                # ,
+                                # hr()
+                                # ,
+                                
+                                
+                                # ,
+                                # Insert spider map, keep comma from above
+                                
+                              )
+                              
+                              # close sidebarlayout      
+                            )
+                            # close tabpanel        
+                   )      
                                
                                
                               
