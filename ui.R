@@ -3,20 +3,22 @@ library(plotly)
 library(knitr)
 
 # Define UI for application
-shinyUI(fluidPage(theme = "bootstrap.css", 
-########################################### new stuff  
+shinyUI(fluidPage(
+  
+       theme = "bootstrap.css", 
+       
        (navbarPage('The Meme Team - Compatibility Test',
                    
-                   hr(),
+                  hr(),
         
-                    tabPanel('WordCloud',
+                  tabPanel('WordCloud',
                     
-                             titlePanel('Frequently used words in tweets'),
+                           titlePanel('Frequently used words in tweets'),
                              
-                             sidebarLayout(
+                           sidebarLayout(
                             
-                               sidebarPanel(
-                                 
+                             sidebarPanel(
+                               
                                  textInput("t_handle_1", 
                                            label = h3("Input a Twitter Handle"), 
                                            value = '@realDonaldTrump')
@@ -50,59 +52,35 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                     # close tabpanel        
                     ),
                    
-                   tabPanel('Big 5',
+                    tabPanel('Big 5',
                             
-                            titlePanel('Personality on a 5-point scale'),
+                             titlePanel('Personality on a 5-point scale'),
                             
-                            sidebarLayout(
+                             sidebarLayout(
+                               
+                               sidebarPanel(
+                                 
+                                 textInput("t_handle_1", 
+                                           label = h3("Input a Twitter Handle"), 
+                                           value = '@RealDonaldTrump'),
+                                
+                                           textInput("t_handle_2", 
+                                                     label = h3("Input a Second Twitter Handle"), 
+                                                     value = '@HillaryClinton')
+                                
+                               ),
                               
-                              sidebarPanel(
+                               mainPanel(
                                 
-                                textInput("t_handle_1", 
-                                          label = h3("Input a Twitter Handle"), 
-                                          value = '@realDonaldTrump')
                                 
-                                ,
-                                
-                                textInput("t_handle_2", 
-                                          label = h3("Input a Second Twitter Handle"), 
-                                          value = '@HillaryClinton')
-                                
-                              ),
-                              
-                              ## Not sure if two things work for main panel
-                              mainPanel(
-                                plotOutput("word_cloud_1")
-                                
-                                # ,
-                                # Insert spider map, keep comma from above
-                                
-                                ,
-                                hr()
-                                ,
-                                ########################## Doesn't show two charts in the mainpanel?
-                                
-                                plotOutput("word_cloud_2")
-                                
-                                # ,
-                                # Insert spider map, keep comma from above
-                                
-                              )
+                               )
                               
                               # close sidebarlayout      
-                            )
-                            # close tabpanel        
+                             )
+                   # close tabpanel        
                    )
-                               
-                               
-                               
-                               
-                              
-))
-                  
-                  
-########################################### newstuff                 
-  )
+                ))
+       )
 )
 
 
