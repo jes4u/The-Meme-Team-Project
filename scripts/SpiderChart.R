@@ -3,7 +3,6 @@ radarchart(data)
 
 # pass in data frame as data. This code returns a spider chart of one person.
 
-# Custom the radarChart !
 radarchart( data  , axistype=1 , 
 
     #custom polygon
