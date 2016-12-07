@@ -57,7 +57,7 @@ shinyServer(function(input, output) {
   })
   
   output$word_cloud_2 <- renderPlot({
-    return(repeatable(getWordMap(input$t_handle_2))) 
+    return(getWordMap(input$t_handle_2)) 
   })
   
   output$user_personality <- renderDataTable({

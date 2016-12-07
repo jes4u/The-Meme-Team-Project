@@ -9,9 +9,9 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                    
                    hr(),
         
-                    tabPanel('Big 5',
+                    tabPanel('WordCloud',
                     
-                             titlePanel('Mapping of Your Big 5 Personailities'),
+                             titlePanel('Frequently used words in tweets'),
                              
                              sidebarLayout(
                             
@@ -33,9 +33,6 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                mainPanel(
                                  plotOutput("word_cloud_1")
                                  
-                                 # ,
-                                 # Insert spider map, keep comma from above
-                                 
                                  ,
                                  hr()
                                  ,
@@ -51,7 +48,51 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                             # close sidebarlayout      
                              )
                     # close tabpanel        
-                    )
+                    ),
+                   
+                   tabPanel('Big 5',
+                            
+                            titlePanel('Personality on a 5-point scale'),
+                            
+                            sidebarLayout(
+                              
+                              sidebarPanel(
+                                
+                                textInput("t_handle_1", 
+                                          label = h3("Input a Twitter Handle"), 
+                                          value = '@realDonaldTrump')
+                                
+                                ,
+                                
+                                textInput("t_handle_2", 
+                                          label = h3("Input a Second Twitter Handle"), 
+                                          value = '@HillaryClinton')
+                                
+                              ),
+                              
+                              ## Not sure if two things work for main panel
+                              mainPanel(
+                                plotOutput("word_cloud_1")
+                                
+                                # ,
+                                # Insert spider map, keep comma from above
+                                
+                                ,
+                                hr()
+                                ,
+                                ########################## Doesn't show two charts in the mainpanel?
+                                
+                                plotOutput("word_cloud_2")
+                                
+                                # ,
+                                # Insert spider map, keep comma from above
+                                
+                              )
+                              
+                              # close sidebarlayout      
+                            )
+                            # close tabpanel        
+                   )
                                
                                
                                
