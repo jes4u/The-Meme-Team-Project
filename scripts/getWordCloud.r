@@ -1,4 +1,4 @@
-source('./getData.r')
+#source('./getData.r')
 
 library(wordcloud)
 library(randomcoloR)
