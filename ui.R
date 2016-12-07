@@ -88,7 +88,7 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                    
                    tabPanel('Compatability',
                             
-                            titlePanel('TEST YOUR COMPATABILITY'),
+                            titlePanel('Test your compatability'),
                             
                             sidebarLayout(
                               
