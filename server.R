@@ -60,10 +60,6 @@ source('./scripts/SpiderChart.R')
       return(getWordMap(input$t_handle_2)) 
     })
     
-    output$user_personality <- renderDataTable({
-      return(getJungian(input$t_handle))
-    })
-    
     output$spider_chart <- renderPlot({
       return(spiderChart(as.data.frame(GetBig5DF(GetPredDF(GetData(t_handle_3)),
                                                  GetPredDF(GetData(t_handle_4)))),
