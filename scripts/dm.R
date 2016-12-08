@@ -8,7 +8,6 @@ GetBig5DF <- function(pred_df1, pred_df2) {
   pred_df2 <- pred_df2 %>% select(-contains("3"), -contains("4"))
   data1 <- pred_df1 %>% select(contains("value"))
   data2 <- pred_df2 %>% select(contains("value"))
-  #df[1,] <- data
   df <- rbind(rep(1,5) , rep(0,5) , data1, data2)
   colnames(df) <- c("Openness",
                     "Extraversion",
