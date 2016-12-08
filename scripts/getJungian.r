@@ -34,10 +34,6 @@ getJungian <- function(t_handle, token){
   
   df <- data.frame(Type, Subjective, Objective)
   
-  # rownames(df) <- df[,1]
-  # df[,1] <- NULL
-  # 
-  
   
   return(df)
 }
