@@ -9,25 +9,25 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                    
                   hr(),
         
+                    sidebarPanel(
+                      
+                      textInput("t_handle_1", 
+                                label = h3("Input a Twitter Handle"), 
+                                value = '@RealDonaldTrump')
+                      
+                      ,
+                      
+                      textInput("t_handle_2", 
+                                label = h3("Input a Second Twitter Handle"), 
+                                value = '@HillaryClinton')
+                      
+                    ),
+                  
                   tabPanel('WordCloud',
                     
                            titlePanel('Frequently used words in tweets'),
                              
-                           sidebarLayout(
-                            
-                             sidebarPanel(
-                               
-                                 textInput("t_handle_1", 
-                                           label = h3("Input a Twitter Handle"), 
-                                           value = '@RealDonaldTrump')
-                                 
-                                 ,
-                                 
-                                 textInput("t_handle_2", 
-                                           label = h3("Input a Second Twitter Handle"), 
-                                           value = '@HillaryClinton')
-                                 
-                               ),
+                           
                                
                                mainPanel(
                                  plotOutput("word_cloud_1")
@@ -42,36 +42,26 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                )
                             
                             # close sidebarlayout      
-                             )
+                             ),
                     # close tabpanel        
-                    ),
+                    
                    
                     tabPanel('Big 5',
                             
                              titlePanel('Personality on a 5-point scale'),
                             
-                            sidebarLayout(
-                              
-                              sidebarPanel(
-                                
-                                textInput("t_handle_3", 
-                                          label = h3("Input a Twitter Handle"), 
-                                          value = '@RealDonaldTrump')
-                                
-                                ,
-                                
-                                textInput("t_handle_4", 
-                                          label = h3("Input a Second Twitter Handle"), 
-                                          value = '@HillaryClinton')
-                                
-                               ),
+                            
                               
                               mainPanel(
                                 
                                 # Insert spider map
                                 plotOutput("spider_chart")
-                                # ,
-                                # hr()
+                                ,
+                                hr(),
+                                textOutput("text1"),
+                                tableOutput("spider_data_1"),
+                                textOutput("text2"),
+                                tableOutput("spider_data_2")
                                 # ,
 
 
@@ -83,29 +73,15 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                               # close sidebarlayout      
                             )
                             # close tabpanel        
-                   )
-                               
                    ,
+                               
+                   
                    
                    tabPanel('Compatability',
                             
                             titlePanel('Test your compatability'),
                             
-                            sidebarLayout(
-                              
-                              sidebarPanel(
-                                
-                                textInput("t_handle_5", 
-                                          label = h3("Input a Twitter Handle"), 
-                                          value = '@RealDonaldTrump')
-                                
-                                ,
-                                
-                                textInput("t_handle_6", 
-                                          label = h3("Input a Second Twitter Handle"), 
-                                          value = '@HillaryClinton')
-                                
-                              ),
+                            
                               
                               mainPanel(
                                 
@@ -126,9 +102,9 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                
                                
                               
+)
 ))
-)
-)
+
 
 
 

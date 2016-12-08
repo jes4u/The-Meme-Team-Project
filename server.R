@@ -24,10 +24,10 @@ source('./scripts/SpiderChart.R')
     t_access_token <- "4081108513-Lj3BaXetniCt09A1uvn4U5YFZGSM1JQHiyapjfq"
     t_access_token_secret <- "S1YtKDOJIXDj2ARejfFv3tbx8OmBVFUHgStiCoLBdwOGr"
     
-    # setup_twitter_oauth(t_api_key,
-    #                     t_api_secret,
-    #                     t_access_token,
-    #                     t_access_token_secret)
+    setup_twitter_oauth(t_api_key,
+                        t_api_secret,
+                        t_access_token,
+                        t_access_token_secret)
 # Twitter Oauth (Calls once when you publish the app)######################################################## 
     
     
@@ -57,11 +57,36 @@ source('./scripts/SpiderChart.R')
     })
     
     output$spider_chart <- renderPlot({
-      return(spiderChart(as.data.frame(GetBig5DF(GetPredDF(GetData(input$t_handle_3,
+      
+      return(spiderChart(as.data.frame(GetBig5DF(GetPredDF(GetData(input$t_handle_1,
                                                                    token)),
-                                                 GetPredDF(GetData(input$t_handle_4,
+                                                 GetPredDF(GetData(input$t_handle_2,
                                                                    token)))),
-                         input$t_handle_3,
-                         input$t_handle_4))
+                         input$t_handle_1,
+                         input$t_handle_2))
+    })
+    
+    output$text1 <- renderText({
+      return(input$t_handle_1)
+    })
+    
+    output$spider_data_1 <- renderTable({
+      df <- as.data.frame(GetBig5DF(GetPredDF(GetData(input$t_handle_1,
+                                                       token)),
+                                     GetPredDF(GetData(input$t_handle_2,
+                                                       token))))[3,]
+      return(df)
+    })
+    
+    output$text2 <- renderText({
+      return(input$t_handle_2)
+    })
+    
+    output$spider_data_2 <- renderTable({
+      df <- as.data.frame(GetBig5DF(GetPredDF(GetData(input$t_handle_1,
+                                                      token)),
+                                    GetPredDF(GetData(input$t_handle_2,
+                                                      token))))[4,]
+      return(df)
     })
   })
