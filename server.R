@@ -46,9 +46,7 @@ source('./scripts/SpiderChart.R')
                          add_headers("Content-Type"="application/json"), 
                          body = '{"customer_id": 2557, 
                          "api_key": "hb2r82i8saloj1ectsfsi5omlq"}')
-    if (ams_auth_req$status_code != 200) {
-      print("Bad key/id")
-    }
+    token <- httr::content(ams_auth_req)$token
     #AMS Oauth (Only calls when a user opens the app)########################################################
     
     #Continuously calls when in app ###############################
