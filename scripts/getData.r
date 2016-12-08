@@ -4,14 +4,15 @@ library(shiny)
 library(httr)
 library(devtools)
 library(twitteR)
-
-getData <- function(){
   
   #Sends POST request to AMS
   #Handles token regenation
   #Takes auth token and concatenated tweets for a user as parameters
   RequestAMS <- function(token='uuj6skmeji1km2ecodfv0nsptf', tweets) {
-    request <- POST(paste0(ams_base, "text?", "source=TWEET", "&interpretations=true"),
+    request <- POST(paste0("http://api-v2.applymagicsauce.com/", 
+                           "text?", 
+                           "source=TWEET", 
+                           "&interpretations=true"),
                     add_headers("X-Auth-Token"=token,
                                 "Content-type"="application/json"),
                     body=tweets)
@@ -21,16 +22,11 @@ getData <- function(){
                            add_headers("Content-Type"="application/json"), 
                            body = '{"customer_id": 2557, 
                            "api_key": "hb2r82i8saloj1ectsfsi5omlq"}')
-      if (ams_auth_req$status_code != 200) {
-        return("Bad key/id")
-      } else {
-        token <- content(ams_auth_req)$token
+        token <- httr::content(ams_auth_req)$token
         request <- RequestAMS(token, tweets)
-      }
-  }
-    return(request)
     }
-}  
+    return(request)
+  }
   
   
   

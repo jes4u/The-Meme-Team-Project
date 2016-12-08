@@ -36,13 +36,12 @@ source('./scripts/SpiderChart.R')
     
   
     #AMS Oauth (Only calls when a user opens the app)########################################################
-  
-    ams_base <- "http://api-v2.applymagicsauce.com/"
+    
     ams_customer_id <- '2557'
     ams_api_key <- 'hb2r82i8saloj1ectsfsi5omlq'
     
     #Initial Auth
-    ams_auth_req <- POST(paste0(ams_base, "auth"), 
+    ams_auth_req <- POST("http://api-v2.applymagicsauce.com/auth", 
                          add_headers("Content-Type"="application/json"), 
                          body = '{"customer_id": 2557, 
                          "api_key": "hb2r82i8saloj1ectsfsi5omlq"}')
@@ -59,10 +58,10 @@ source('./scripts/SpiderChart.R')
     })
     
     output$spider_chart <- renderPlot({
-      return(spiderChart(as.data.frame(GetBig5DF(GetPredDF(GetData(t_handle_3)),
-                                                 GetPredDF(GetData(t_handle_4)))),
-                         t_handle_3,
-                         t_handle_4))
+      return(spiderChart(as.data.frame(GetBig5DF(GetPredDF(GetData(input$t_handle_3)),
+                                                 GetPredDF(GetData(input$t_handle_4)))),
+                         input$t_handle_3,
+                         input$t_handle_4))
     })
     
     
