@@ -16,14 +16,14 @@ library(twitteR)
                     add_headers("X-Auth-Token"=token,
                                 "Content-type"="application/json"),
                     body=tweets)
-    if (request$status_code == 403) {
+    if (request$status_code != 200) {
       ###Redundant, find more elegant solution###
       ams_auth_req <- POST(paste0(ams_base, "auth"), 
                            add_headers("Content-Type"="application/json"), 
                            body = '{"customer_id": 2557, 
                            "api_key": "hb2r82i8saloj1ectsfsi5omlq"}')
-        token <- httr::content(ams_auth_req)$token
-        request <- RequestAMS(token, tweets)
+      token <- httr::content(ams_auth_req)$token
+      request <- RequestAMS(token, tweets)
     }
     return(request)
   }
@@ -31,8 +31,9 @@ library(twitteR)
   
   
   #Get data for a user
-  GetData <- function(user) {
+  GetData <- function(user, token) {
     tweets <- GetTweets(user)
+    print(tweets)
     resp <- RequestAMS(token, tweets)
     return(content(resp))
   }
