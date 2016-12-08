@@ -52,8 +52,10 @@ library(twitteR)
     t_user <- getUser(t_handle)
     timeline <- userTimeline(t_user)
     tweets <- c()
-    for (i in seq(length(timeline))) {
-      tweets <- c(tweets, timeline[[i]]$text)
+    if (length(timeline) > 0) {
+      for (i in seq(length(timeline))) {
+        tweets <- c(tweets, timeline[[i]]$text)
+      }
     }
     return(toString(tweets))
   }
