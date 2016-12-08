@@ -5,7 +5,6 @@ library(httr)
 library(devtools)
 library(twitteR)
 
-getData <- function(){
   #Twitter#######################################################################
   
   ###Remove when finished###
@@ -33,8 +32,9 @@ getData <- function(){
                        "api_key": "hb2r82i8saloj1ectsfsi5omlq"}')
   if (ams_auth_req$status_code != 200) {
     print("Bad key/id")
+  } else {
+    token <- content(ams_auth_req)$token
   }
-  token <- content(ams_auth_req)$token
   
   #Sends POST request to AMS
   #Handles token regenation
@@ -59,7 +59,6 @@ getData <- function(){
   }
     return(request)
     }
-}  
   
   
   

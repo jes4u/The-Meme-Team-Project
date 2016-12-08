@@ -35,7 +35,7 @@ shinyServer(function(input, output) {
 
   #AMS Oauth (Only calls when a user opens the app)########################################################
 
-  ams_base <- "http://api-v2.applymagicsauce.com/"
+  ams_base <- 'http://api-v2.applymagicsauce.com'
   ams_customer_id <- '2557'
   ams_api_key <- 'hb2r82i8saloj1ectsfsi5omlq'
   
@@ -44,9 +44,6 @@ shinyServer(function(input, output) {
                        add_headers("Content-Type"="application/json"), 
                        body = '{"customer_id": 2557, 
                        "api_key": "hb2r82i8saloj1ectsfsi5omlq"}')
-  if (ams_auth_req$status_code != 200) {
-    print("Bad key/id")
-  }
   #AMS Oauth (Only calls when a user opens the app)########################################################
   
   
