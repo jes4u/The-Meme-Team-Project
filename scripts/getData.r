@@ -39,12 +39,12 @@ library(twitteR)
   
   #Get the raw predictions df
   GetPredDF <- function(data) {
-    return(as.data.frame(data$predictions))
+    return(as.data.frame(httr::content(data)$predictions))
   }
   
   #Get the raw interpretations df
   GetIntDF <- function(data) {
-    return(as.data.frame(data$interpretations))
+    return(as.data.frame(httr::content(data)$interpretations))
   } 
   
   #Get Tweets by twitter handle

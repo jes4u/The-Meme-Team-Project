@@ -31,7 +31,6 @@ source('./scripts/SpiderChart.R')
 # Twitter Oauth (Calls once when you publish the app)######################################################## 
     
     
-# Shiny Server################################################################################ Shiny Server
   shinyServer(function(input, output) {
     
   
@@ -61,12 +60,8 @@ source('./scripts/SpiderChart.R')
       return(spiderChart(as.data.frame(GetBig5DF(GetPredDF(GetData(input$t_handle_3,
                                                                    token)),
                                                  GetPredDF(GetData(input$t_handle_4,
-                                                                   token))))
-                         ))
+                                                                   token)))),
+                         input$t_handle_3,
+                         input$t_handle_4))
     })
-    
-    
-    #Continuously calls when in app ###############################
   })
-
-# Shiny Server################################################################################ Shiny Server

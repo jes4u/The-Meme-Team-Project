@@ -19,7 +19,7 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                
                                  textInput("t_handle_1", 
                                            label = h3("Input a Twitter Handle"), 
-                                           value = '@realDonaldTrump')
+                                           value = '@RealDonaldTrump')
                                  
                                  ,
                                  
@@ -56,7 +56,7 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                 
                                 textInput("t_handle_3", 
                                           label = h3("Input a Twitter Handle"), 
-                                          value = '@realDonaldTrump')
+                                          value = '@RealDonaldTrump')
                                 
                                 ,
                                 
@@ -97,7 +97,7 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                 
                                 textInput("t_handle_5", 
                                           label = h3("Input a Twitter Handle"), 
-                                          value = '@realDonaldTrump')
+                                          value = '@RealDonaldTrump')
                                 
                                 ,
                                 
