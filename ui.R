@@ -23,7 +23,26 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                       
                     ),
                   
-                  
+                  tabPanel('WordCloud',
+                    
+                           titlePanel('Frequently used words in tweets'),
+                             
+                           
+                               
+                               mainPanel(
+                                 plotOutput("word_cloud_1")
+                                 
+                                 ,
+                                 hr()
+                                 ,
+
+                                 plotOutput("word_cloud_2")
+                                 
+                                 
+                               )
+                            
+                            # close sidebarlayout      
+                             ),
                     # close tabpanel        
                     
                    
@@ -77,28 +96,8 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                               
                               # close sidebarlayout      
 
-                            ),
-                            # close tabpanel  
-                  tabPanel('WordCloud',
-                           
-                           titlePanel('Frequently used words in tweets'),
-                           
-                           
-                           
-                           mainPanel(
-                             plotOutput("word_cloud_1")
-                             
-                             ,
-                             hr()
-                             ,
-                             
-                             plotOutput("word_cloud_2")
-                             
-                             
-                           )
-                           
-                           # close sidebarlayout      
-                  )
+                            )
+                            # close tabpanel        
                    )      
                                
                                
