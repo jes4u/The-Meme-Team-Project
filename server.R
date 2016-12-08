@@ -11,7 +11,6 @@ library(tm)
 library(base64enc)
 library(knitr)
 library(plotly)
-library(DT)
 
 source('./scripts/getData.R')
 source('./scripts/dm.R')
