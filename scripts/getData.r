@@ -70,12 +70,12 @@ getData <- function(){
     return(content(resp))
   }
   
-  #Get the shitty predictions df
+  #Get the raw predictions df
   GetPredDF <- function(data) {
     return(as.data.frame(data$predictions))
   }
   
-  #Get the shitty interpretations df
+  #Get the raw interpretations df
   GetIntDF <- function(data) {
     return(as.data.frame(data$interpretations))
   } 
