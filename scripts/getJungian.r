@@ -1,9 +1,9 @@
 #source('./getData.r')
 library(knitr)
 
-getJungian <- function(t_handle){
+getJungian <- function(t_handle, token){
   
-  interpretations <- GetIntDF(GetData(t_handle))
+  interpretations <- GetIntDF(GetData(t_handle, token))
   
   personality <- as.character(interpretations[1, "value"]) 
   personality_split <- strsplit(personality, "")[[1]]
@@ -34,8 +34,12 @@ getJungian <- function(t_handle){
   
   df <- data.frame(Type, Subjective, Objective)
   
-  rownames(df) <- df[,1]
-  df[,1] <- NULL
+  # rownames(df) <- df[,1]
+  # df[,1] <- NULL
+  # 
   
-  return(kable(df))
+  
+  return(df)
 }
+
+

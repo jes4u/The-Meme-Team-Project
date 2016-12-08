@@ -11,6 +11,7 @@ library(tm)
 library(base64enc)
 library(knitr)
 library(plotly)
+library(DT)
 
 source('./scripts/getData.R')
 source('./scripts/dm.R')
@@ -62,14 +63,19 @@ source('./scripts/SpiderChart.R')
                                                                    token)),
                                                  GetPredDF(GetData(input$t_handle_2,
                                                                    token)))),
+
                          input$t_handle_1,
                          input$t_handle_2))
     })
     
-    output$text1 <- renderText({
+    output$text1_big5 <- renderText({
       return(input$t_handle_1)
     })
     
+     output$text2_big5 <- renderText({
+      return(input$t_handle_2)
+    })
+     
     output$spider_data_1 <- renderTable({
       df <- as.data.frame(GetBig5DF(GetPredDF(GetData(input$t_handle_1,
                                                        token)),
@@ -78,9 +84,7 @@ source('./scripts/SpiderChart.R')
       return(df)
     })
     
-    output$text2 <- renderText({
-      return(input$t_handle_2)
-    })
+   
     
     output$spider_data_2 <- renderTable({
       df <- as.data.frame(GetBig5DF(GetPredDF(GetData(input$t_handle_1,
@@ -89,4 +93,27 @@ source('./scripts/SpiderChart.R')
                                                       token))))[4,]
       return(df)
     })
-  })
+    
+    output$jungian_1 <- renderTable({
+      df <- as.data.frame(getJungian(input$t_handle_1, token))
+      return(df)
+    })
+    
+    output$text1_jung <- renderText({
+      return(input$t_handle_1)
+    })
+    
+    output$text2_jung <- renderText({
+      return(input$t_handle_2)
+    })
+    
+    output$jungian_2 <- renderTable({
+      df <- as.data.frame(getJungian(input$t_handle_2, token))
+      return(df)
+    })
+  
+    
+
+     
+    
+  }) 
