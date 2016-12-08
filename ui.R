@@ -1,7 +1,6 @@
 library(shiny)
 library(plotly)
 library(knitr)
-library(DT)
 
 # Define UI for application
 
