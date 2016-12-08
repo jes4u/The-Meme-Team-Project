@@ -61,9 +61,8 @@ source('./scripts/SpiderChart.R')
       return(spiderChart(as.data.frame(GetBig5DF(GetPredDF(GetData(input$t_handle_3,
                                                                    token)),
                                                  GetPredDF(GetData(input$t_handle_4,
-                                                                   token)))),
-                         input$t_handle_3,
-                         input$t_handle_4))
+                                                                   token))))
+                         ))
     })
     
     
