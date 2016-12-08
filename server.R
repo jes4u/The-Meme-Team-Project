@@ -13,9 +13,8 @@ library(knitr)
 library(plotly)
 
 source('./scripts/getData.R')
-source('./scripts/dm.R')
-source('./scripts/getJungian.R')
 source('./scripts/getWordCloud.R')
+source('./scripts/DoubleCloud.R')
 
 #Twitter Oauth (Calls only when you publish the app)####################################################### 
 t_api_key <- "RIXgPEn59oOUm2qn5WBQX2sW1"
@@ -55,6 +54,10 @@ shinyServer(function(input, output) {
   
   output$word_cloud_2 <- renderPlot({
     return(getWordMap(input$t_handle_2)) 
+  })
+  
+  output$word_cloud_both <- renderPlot({
+    return(getWordMap2(input$t_handle_3, input$t_handle_4)) 
   })
   
   output$user_personality <- renderDataTable({

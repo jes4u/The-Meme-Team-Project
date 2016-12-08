@@ -52,26 +52,26 @@ shinyUI(fluidPage(
                     # close tabpanel        
                     ),
                    
-                    tabPanel('Big 5',
+                    tabPanel('Combined Word Cloud',
                             
-                             titlePanel('Personality on a 5-point scale'),
+                             titlePanel('Double the trouble'),
                             
                              sidebarLayout(
                                
                                sidebarPanel(
                                  
-                                 textInput("t_handle_1", 
+                                 textInput("t_handle_3", 
                                            label = h3("Input a Twitter Handle"), 
                                            value = '@RealDonaldTrump'),
                                 
-                                           textInput("t_handle_2", 
+                                           textInput("t_handle_4", 
                                                      label = h3("Input a Second Twitter Handle"), 
                                                      value = '@HillaryClinton')
                                 
                                ),
                               
                                mainPanel(
-                                
+                                 plotOutput("word_cloud_both")
                                 
                                )
                               
