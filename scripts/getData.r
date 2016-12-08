@@ -33,9 +33,8 @@ library(twitteR)
   #Get data for a user
   GetData <- function(user, token) {
     tweets <- GetTweets(user)
-    print(tweets)
     resp <- RequestAMS(token, tweets)
-    return(content(resp))
+    return(resp)
   }
   
   #Get the raw predictions df
