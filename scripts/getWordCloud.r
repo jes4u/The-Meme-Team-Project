@@ -9,7 +9,7 @@ getWordMap <- function(user) {
   shorten_tweet <- substr(GetTweets(user), start = 0, stop = 10000)
   cloud <- wordcloud(words=shorten_tweet, 
                      scale=c(4,.5), 
-                     min.freq = 1, 
+                     min.freq = 2, 
                      max.words = Inf, 
                      random.order=FALSE, 
                      rot.per=0.35, 
