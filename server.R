@@ -48,6 +48,9 @@ source('./scripts/SpiderChart.R')
     #AMS Oauth (Only calls when a user opens the app)########################################################
     
     #Continuously calls when in app ###############################
+    
+    ############################################################# The word cloud tab
+    
     output$word_cloud_1 <- renderPlot({
       return(getWordMap(input$t_handle_1))
     })
@@ -55,6 +58,9 @@ source('./scripts/SpiderChart.R')
     output$word_cloud_2 <- renderPlot({
       return(getWordMap(input$t_handle_2)) 
     })
+    
+    
+    ############################################################# The Big5 tab
     
     output$spider_chart <- renderPlot({
       
@@ -93,17 +99,27 @@ source('./scripts/SpiderChart.R')
       return(df)
     })
     
-    output$jungian_1 <- renderTable({
-      df <- as.data.frame(getJungian(input$t_handle_1, token))
-      return(df)
-    })
     
+    ############################################################# The compatability tab
     output$text1_jung <- renderText({
       return(input$t_handle_1)
     })
     
+    output$abrev_1 <- renderText({
+      return(getAbrevJung(input$t_handle_1, token))
+    })
+    
+    output$abrev_2 <- renderText({
+      return(getAbrevJung(input$t_handle_2, token))
+    })
+    
     output$text2_jung <- renderText({
       return(input$t_handle_2)
+    })
+    
+    output$jungian_1 <- renderTable({
+      df <- as.data.frame(getJungian(input$t_handle_1, token))
+      return(df)
     })
     
     output$jungian_2 <- renderTable({

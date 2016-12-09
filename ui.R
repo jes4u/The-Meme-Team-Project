@@ -23,26 +23,7 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                       
                     ),
                   
-                  tabPanel('WordCloud',
-                    
-                           titlePanel('Frequently used words in tweets'),
-                             
-                           
-                               
-                               mainPanel(
-                                 plotOutput("word_cloud_1")
-                                 
-                                 ,
-                                 hr()
-                                 ,
-
-                                 plotOutput("word_cloud_2")
-                                 
-                                 
-                               )
-                            
-                            # close sidebarlayout      
-                             ),
+                  
                     # close tabpanel        
                     
                    
@@ -79,28 +60,50 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                    
                    tabPanel('Compatability',
                             
-                            titlePanel('Test your compatability'),
+                            titlePanel('Test your compatability Using Jungian Personality'),
                             
                             
                               
                               mainPanel( 
                                 
                                 textOutput("text1_jung"),
-                                
+                                br(),
+                                textOutput("abrev_1"),
                                 tableOutput('jungian_1'),
                                 
                                 hr(),
                                 
                                 textOutput("text2_jung"),
-                                
+                                br(),
+                                textOutput("abrev_2"),
                                 tableOutput('jungian_2')
                                 
                                )
                               
                               # close sidebarlayout      
 
-                            )
-                            # close tabpanel        
+                            ),
+                            # close tabpanel  
+                  tabPanel('WordCloud',
+                           
+                           titlePanel('Frequently used words in tweets'),
+                           
+                           
+                           
+                           mainPanel(
+                             plotOutput("word_cloud_1")
+                             
+                             ,
+                             hr()
+                             ,
+                             
+                             plotOutput("word_cloud_2")
+                             
+                             
+                           )
+                           
+                           # close sidebarlayout      
+                  )
                    )      
                                
                                
