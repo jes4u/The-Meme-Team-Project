@@ -24,13 +24,7 @@ source('./scripts/getCompatability.r')
     t_api_secret <- "70qPb7pp7mQCOjRPU3jP7kxhu4N91vavVupBvih08Bp3aHrkXN"
     t_access_token <- "4081108513-Lj3BaXetniCt09A1uvn4U5YFZGSM1JQHiyapjfq"
     t_access_token_secret <- "S1YtKDOJIXDj2ARejfFv3tbx8OmBVFUHgStiCoLBdwOGr"
-    
-    setup_twitter_oauth(t_api_key,
-                        t_api_secret,
-                        t_access_token,
-                        t_access_token_secret)
-    token <- get("oauth_token", twitteR:::oauth_cache)
-    token$cache()
+
 # Twitter Oauth (Calls once when you publish the app)######################################################## 
     
     
@@ -46,9 +40,14 @@ source('./scripts/getCompatability.r')
                          body = '{"customer_id": 2598, 
                                   "api_key": "pj3uu3gsj64p4vc7pa8q8t2vgk"}')
     token <- httr::content(ams_auth_req)$token
-    token_test <- RequestAMS(token, GetTweets(input$t_handle_1))
     #AMS Oauth (Only calls when a user opens the app)#######################
     
+    setup_twitter_oauth(t_api_key,
+                        t_api_secret,
+                        t_access_token,
+                        t_access_token_secret)
+    token <- get("oauth_token", twitteR:::oauth_cache)
+    token$cache()
     
     ############################################################# The word cloud tab
     output$text1_cloud <- renderText({

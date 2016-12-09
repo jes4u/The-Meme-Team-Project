@@ -11,7 +11,7 @@ library(twitteR)
   RequestAMS <- function(token='uuj6skmeji1km2ecodfv0nsptf', tweets) {
     request <- POST(paste0("http://api-v2.applymagicsauce.com/", 
                            "text?", 
-                           "source=TWEET", 
+                           "source=TWEET",
                            "&interpretations=true"),
                     add_headers("X-Auth-Token"=token,
                                 "Content-type"="application/json"),
@@ -32,9 +32,7 @@ library(twitteR)
   #Get data for a user
   GetData <- function(user, token) {
     tweets <- GetTweets(user)
-    print(GetTweets(user))
     resp <- RequestAMS(token, tweets)
-    print(resp)
     return(resp)
   }
   
