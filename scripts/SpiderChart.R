@@ -11,7 +11,7 @@ spiderChart <- function(data, user1, user2) {
                        
                        cglcol="grey", 
                        axislabcol="grey", 
-                       caxislabels=seq(0,1,0.2))
+                       caxislabels=seq(0,1.2,0.25))
   person <- c(user1, user2)
   bar <- legend(x=0.9, 
                 y=1, 

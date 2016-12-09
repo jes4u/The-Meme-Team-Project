@@ -18,7 +18,7 @@ library(twitteR)
                     body=tweets)
     if (request$status_code != 200) {
       ###Redundant, find more elegant solution###
-      ams_auth_req <- POST(paste0(ams_base, "auth"), 
+      ams_auth_req <- POST(paste0("http://api-v2.applymagicsauce.com/auth"), 
                            add_headers("Content-Type"="application/json"), 
                            body = '{"customer_id": 2557, 
                            "api_key": "hb2r82i8saloj1ectsfsi5omlq"}')

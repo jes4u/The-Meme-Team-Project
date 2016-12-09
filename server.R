@@ -24,10 +24,10 @@ source('./scripts/SpiderChart.R')
     t_access_token <- "4081108513-Lj3BaXetniCt09A1uvn4U5YFZGSM1JQHiyapjfq"
     t_access_token_secret <- "S1YtKDOJIXDj2ARejfFv3tbx8OmBVFUHgStiCoLBdwOGr"
     
-    setup_twitter_oauth(t_api_key,
-                        t_api_secret,
-                        t_access_token,
-                        t_access_token_secret)
+    # setup_twitter_oauth(t_api_key,
+    #                     t_api_secret,
+    #                     t_access_token,
+    #                     t_access_token_secret)
 # Twitter Oauth (Calls once when you publish the app)######################################################## 
     
     
@@ -78,24 +78,25 @@ source('./scripts/SpiderChart.R')
                                                                    token)),
                                                  GetPredDF(GetData(input$t_handle_2,
                                                                    token)))),
+
                          input$t_handle_1,
                          input$t_handle_2))
     })
     
-    output$spider_text_1 <- renderText({
+    output$text1_big5 <- renderText({
       return(input$t_handle_1)
     })
     
+     output$text2_big5 <- renderText({
+      return(input$t_handle_2)
+    })
+     
     output$spider_data_1 <- renderTable({
       df <- as.data.frame(GetBig5DF(GetPredDF(GetData(input$t_handle_1,
                                                        token)),
                                      GetPredDF(GetData(input$t_handle_2,
                                                        token))))[3,]
       return(df)
-    })
-    
-    output$spider_text_2 <- renderText({
-      return(input$t_handle_2)
     })
     
     output$spider_data_2 <- renderTable({
@@ -105,4 +106,27 @@ source('./scripts/SpiderChart.R')
                                                       token))))[4,]
       return(df)
     })
-  })
+    
+    output$jungian_1 <- renderTable({
+      df <- as.data.frame(getJungian(input$t_handle_1, token))
+      return(df)
+    })
+    
+    output$text1_jung <- renderText({
+      return(input$t_handle_1)
+    })
+    
+    output$text2_jung <- renderText({
+      return(input$t_handle_2)
+    })
+    
+    output$jungian_2 <- renderTable({
+      df <- as.data.frame(getJungian(input$t_handle_2, token))
+      return(df)
+    })
+  
+    
+
+     
+    
+  }) 

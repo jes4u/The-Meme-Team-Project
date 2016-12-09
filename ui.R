@@ -45,9 +45,9 @@ shinyUI(
                                 # Insert spider map
                                 plotOutput("spider_chart"),
                                 hr(),
-                                textOutput("spider_text_1"),
+                                textOutput("text1_big5"),
                                 tableOutput("spider_data_1"),
-                                textOutput("spider_text_2"),
+                                textOutput("text2_big5"),
                                 tableOutput("spider_data_2")
                                 # ,
 
@@ -67,14 +67,17 @@ shinyUI(
                             
                             
                               
-                              mainPanel(
+                              mainPanel( 
                                 
-                                # Insert spider map
+                                textOutput("text1_jung"),
                                 
-                                # ,
-                                # hr()
-                                # ,
+                                tableOutput('jungian_1'),
                                 
+                                hr(),
+                                
+                                textOutput("text2_jung"),
+                                
+                                tableOutput('jungian_2')
                                 
                                )
                               

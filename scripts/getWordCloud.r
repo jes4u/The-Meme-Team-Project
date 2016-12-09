@@ -11,9 +11,7 @@ getWordMap <- function(user, user2=NULL) {
   } else {
     shorten_tweet <- substr(GetTweets(user), start = 0, stop = 10000)
     shorten_tweet <- paste(shorten_tweet, 
-                           substr(GetTweets(user2), 
-                                  start = 0, 
-                                  stop = 10000), 
+                           substr(GetTweets(user2), start = 0, stop = 10000), 
                            sep=" ")
   }
   return(wordcloud(words=shorten_tweet, 
