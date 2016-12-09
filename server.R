@@ -48,9 +48,16 @@ source('./scripts/getCompatability.R')
     
     
     ############################################################# The word cloud tab
+    output$text1_cloud <- renderText({
+      return(input$t_handle_1)
+    })
     
     output$word_cloud_1 <- renderPlot({
       return(getWordMap(input$t_handle_1))
+    })
+    
+    output$text2_cloud <- renderText({
+      return(input$t_handle_2)
     })
     
     output$word_cloud_2 <- renderPlot({

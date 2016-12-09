@@ -82,13 +82,15 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                 
                                 br(),
                                 
-                                #textOutput("isCompatable"),
+                                textOutput("isCompatable"),
                                 
-                                "Here is the table we used to determine their compatability:"
+                                "Here is the table we used to determine their compatability:",
                                 
-                                #tableOutput("displayJungianTable")
+                                tableOutput("displayJungianTable"),
                                 
-                                #<a href="https://www.pinterest.com/pin/50172983322221151/" target="_blank">Source</a>
+                                br(),
+                                
+                                "Source: https://www.pinterest.com/pin/50172983322221151/"
                                 
                                ) 
                               
@@ -103,12 +105,15 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                            
                            
                            mainPanel(
+                             
+                             textOutput("text1_cloud"),
                              plotOutput("word_cloud_1")
                              
                              ,
                              hr()
                              ,
                              
+                             textOutput("text2_cloud"),
                              plotOutput("word_cloud_2")
                              
                              
