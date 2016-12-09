@@ -67,7 +67,9 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                               mainPanel( 
                                 
                                 textOutput("text1_jung"),
+                                
                                 br(),
+                                
                                 textOutput("abrev_1"),
                                 tableOutput('jungian_1'),
                                 
@@ -76,9 +78,19 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                 textOutput("text2_jung"),
                                 br(),
                                 textOutput("abrev_2"),
-                                tableOutput('jungian_2')
+                                tableOutput('jungian_2'),
                                 
-                               )
+                                br(),
+                                
+                                #textOutput("isCompatable"),
+                                
+                                "Here is the table we used to determine their compatability:"
+                                
+                                #tableOutput("displayJungianTable")
+                                
+                                #<a href="https://www.pinterest.com/pin/50172983322221151/" target="_blank">Source</a>
+                                
+                               ) 
                               
                               # close sidebarlayout      
 

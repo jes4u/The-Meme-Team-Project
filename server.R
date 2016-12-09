@@ -17,8 +17,9 @@ source('./scripts/dm.R')
 source('./scripts/getJungian.R')
 source('./scripts/getWordCloud.R')
 source('./scripts/SpiderChart.R')
+source('./scripts/getCompatability.R')
 
-# Twitter Oauth (Calls once when you publish the app)########################################################
+# Twitter Oauth (Calls once when you publish the app)#######################
     t_api_key <- "RIXgPEn59oOUm2qn5WBQX2sW1"
     t_api_secret <- "70qPb7pp7mQCOjRPU3jP7kxhu4N91vavVupBvih08Bp3aHrkXN"
     t_access_token <- "4081108513-Lj3BaXetniCt09A1uvn4U5YFZGSM1JQHiyapjfq"
@@ -28,14 +29,12 @@ source('./scripts/SpiderChart.R')
                         t_api_secret,
                         t_access_token,
                         t_access_token_secret)
-# Twitter Oauth (Calls once when you publish the app)######################################################## 
+# Twitter Oauth (Calls once when you publish the app)#######################
     
     
-  shinyServer(function(input, output) {
+  shinyServer(function(input, output) { #################################### Shiny Server ######################################
     
-  
-    #AMS Oauth (Only calls when a user opens the app)########################################################
-    
+    #AMS Oauth (Only calls when a user opens the app)#######################
     ams_customer_id <- '2557'
     ams_api_key <- 'hb2r82i8saloj1ectsfsi5omlq'
     
@@ -45,9 +44,8 @@ source('./scripts/SpiderChart.R')
                          body = '{"customer_id": 2557, 
                          "api_key": "hb2r82i8saloj1ectsfsi5omlq"}')
     token <- httr::content(ams_auth_req)$token
-    #AMS Oauth (Only calls when a user opens the app)########################################################
+    #AMS Oauth (Only calls when a user opens the app)#######################
     
-    #Continuously calls when in app ###############################
     
     ############################################################# The word cloud tab
     
@@ -58,7 +56,6 @@ source('./scripts/SpiderChart.R')
     output$word_cloud_2 <- renderPlot({
       return(getWordMap(input$t_handle_2)) 
     })
-    
     
     ############################################################# The Big5 tab
     
@@ -126,9 +123,24 @@ source('./scripts/SpiderChart.R')
       df <- as.data.frame(getJungian(input$t_handle_2, token))
       return(df)
     })
+    
+    output$displayJungianTable <- renderTable({
+      df <- as.data.frame(getJungian(getCompatabilityTable())) 
+      return(df)
+    })
+    
+    output$isCompatable <- renderText({
+      compatability <- isCompatable(input$t_handle_1, input$t_handle_2, token)
+      result <- paste0(input$t_handle_1, " and ", input$t_handle_2, "compatability result: ", compatability)
+      return(result)
+    })
+    
+    
+    
+    
   
     
 
      
     
-  }) 
+  })  
