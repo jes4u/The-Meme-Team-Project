@@ -12,12 +12,12 @@ library(base64enc)
 library(knitr)
 library(plotly)
 
-source('./scripts/getData.R')
+source('./scripts/getData.r')
 source('./scripts/dm.R')
-source('./scripts/getJungian.R')
-source('./scripts/getWordCloud.R')
+source('./scripts/getJungian.r')
+source('./scripts/getWordCloud.r')
 source('./scripts/SpiderChart.R')
-source('./scripts/getCompatability.R')
+source('./scripts/getCompatability.r')
 
 # Twitter Oauth (Calls once when you publish the app)#######################
     t_api_key <- "RIXgPEn59oOUm2qn5WBQX2sW1"
