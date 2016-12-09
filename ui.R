@@ -21,18 +21,6 @@ shinyUI(
                                 value = '@HillaryClinton')
                       
                     ),
-                  tabPanel('WordCloud',
-                           titlePanel('Frequently used words in recent tweets'),
-                           mainPanel(textOutput("word_cloud_text_1"),
-                                     plotOutput("word_cloud_1"),
-                                     hr(),
-                                     textOutput("word_cloud_text_2"),
-                                     plotOutput("word_cloud_2"),
-                                     hr(),
-                                     textOutput("word_cloud_text_3"),
-                                     plotOutput("word_cloud_3")
-                           )
-                  ),
                    
                     tabPanel('Big 5',
                             
@@ -63,7 +51,7 @@ shinyUI(
                    
                    tabPanel('Compatability',
                             
-                            titlePanel('Test your compatability'),
+                            titlePanel('Test your compatability Using Jungian Personality'),
                             
                             
                               
@@ -71,20 +59,54 @@ shinyUI(
                                 
                                 textOutput("text1_jung"),
                                 
+                                br(),
+                                
+                                textOutput("abrev_1"),
                                 tableOutput('jungian_1'),
                                 
                                 hr(),
                                 
                                 textOutput("text2_jung"),
+                                br(),
+                                textOutput("abrev_2"),
+                                tableOutput('jungian_2'),
                                 
-                                tableOutput('jungian_2')
+                                br(),
                                 
-                               )
+                                #textOutput("isCompatable"),
+                                
+                                "Here is the table we used to determine their compatability:"
+                                
+                                #tableOutput("displayJungianTable")
+                                
+                                #<a href="https://www.pinterest.com/pin/50172983322221151/" target="_blank">Source</a>
+                                
+                               ) 
                               
                               # close sidebarlayout      
 
-                            )
-                            # close tabpanel        
+                            ),
+                            # close tabpanel  
+                  tabPanel('WordCloud',
+                           
+                           titlePanel('Frequently used words in tweets'),
+                           
+                           
+                           
+                           mainPanel(
+                             plotOutput("word_cloud_1")
+                             
+                             ,
+                             hr()
+                             ,
+                             
+                             plotOutput("word_cloud_2")
+                             
+                             
+                           )
+                           
+                           # close sidebarlayout      
+                  )
                    )      
 )
 )
