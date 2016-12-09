@@ -6,19 +6,21 @@ library(knitr)
 
 shinyUI(
   fluidPage(theme = "bootstrap.css", 
-            (navbarPage('The Meme Team - Compatibility Test',
+            (navbarPage('The Meme Team - Twitter Psyche',
                   hr(),
                     sidebarPanel(
                       
                       textInput("t_handle_1", 
-                                label = h3("Input a Twitter Handle"), 
+                                label = h3("Input a twitter handle"), 
                                 value = '@RealDonaldTrump')
                       
                       ,
                       
                       textInput("t_handle_2", 
-                                label = h3("Input a Second Twitter Handle"), 
-                                value = '@HillaryClinton')
+                                label = h3("Input a second twitter handle"), 
+                                value = '@HillaryClinton'),
+                      
+                      "Click on the tabs to get information!"
                       
                     ),
                    
@@ -37,11 +39,6 @@ shinyUI(
                                 tableOutput("spider_data_1"),
                                 textOutput("text2_big5"),
                                 tableOutput("spider_data_2")
-                                # ,
-
-
-                                # ,
-                                # Insert spider map, keep comma from above
                               
                               #close mainpanel 
                               )
@@ -51,7 +48,7 @@ shinyUI(
                    
                    tabPanel('Compatability',
                             
-                            titlePanel('Test your compatability Using Jungian Personality'),
+                            titlePanel('Test compatability of Jungian personality types'),
                             
                             
                               
@@ -87,7 +84,7 @@ shinyUI(
                             # close tabpanel  
                   tabPanel('WordCloud',
                            
-                           titlePanel('Frequently used words in tweets'),
+                           titlePanel('Frequently used words in recent tweets'),
                            
                            
                            

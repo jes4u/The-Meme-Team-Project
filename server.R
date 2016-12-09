@@ -124,13 +124,13 @@ source('./scripts/getCompatability.r')
     
     output$isCompatable <- renderText({
       compatability <- isCompatable(input$t_handle_1, input$t_handle_2)
-      result <- paste0("Compatability result for", 
-                       input$t_handle_1, 
-                       "&", 
-                       input$t_handle_2, 
-                       ":", 
-                       compatability,
-                       sep=" ")
+      result <- paste("Compatability result for", 
+                      input$t_handle_1, 
+                      "&", 
+                      input$t_handle_2, 
+                      ":", 
+                      compatability,
+                      sep=" ")
       return(result)
     })
     
