@@ -73,13 +73,15 @@ shinyUI(
                                 
                                 br(),
                                 
-                                #textOutput("isCompatable"),
+                                textOutput("isCompatable"),
                                 
-                                "Here is the table we used to determine their compatability:"
+                                "Here is the table we used to determine their compatability:",
                                 
-                                #tableOutput("displayJungianTable")
+                                tableOutput("displayJungianTable"),
                                 
-                                #<a href="https://www.pinterest.com/pin/50172983322221151/" target="_blank">Source</a>
+                                br(),
+                                
+                                "Source: https://www.pinterest.com/pin/50172983322221151/"
                                 
                                ) 
                               
@@ -94,13 +96,15 @@ shinyUI(
                            
                            
                            mainPanel(
-                             plotOutput("word_cloud_1")
                              
-                             ,
-                             hr()
-                             ,
-                             
-                             plotOutput("word_cloud_2")
+                             textOutput("word_cloud_text_1"),
+                             plotOutput("word_cloud_1"),
+                             hr(),
+                             textOutput("word_cloud_text_2"),
+                             plotOutput("word_cloud_2"),
+                             hr(),
+                             textOutput("word_cloud_text_3"),
+                             plotOutput("word_cloud_3")
                              
                              
                            )
