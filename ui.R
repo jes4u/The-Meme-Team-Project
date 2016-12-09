@@ -75,14 +75,10 @@ shinyUI(
                                 
                                 textOutput("isCompatable"),
                                 
-                                "Here is the table we used to determine their compatability:",
-                                
-                                tableOutput("displayJungianTable"),
-                                
                                 br(),
                                 
-                                "Source: https://www.pinterest.com/pin/50172983322221151/"
-                                
+                                tags$a(href="http://i1286.photobucket.com/albums/a607/Graciesings/Singlescompatibilitychart818_zps0ad188bb.jpg", 
+                                       "Source")
                                ) 
                               
                               # close sidebarlayout      
@@ -111,7 +107,7 @@ shinyUI(
                            
                            # close sidebarlayout      
                   )
-                   )      
+)      
 )
 )
 )

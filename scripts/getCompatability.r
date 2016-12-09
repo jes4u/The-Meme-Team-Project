@@ -26,9 +26,9 @@ getCompatabilityTable <- function(){
 }
 
 #Tests whether two twitter accounts are compatable
-isCompatable <- function(t_handle1, t_handle2, token){
-  person1 <- getAbrevJung(t_handle1, token)
-  person2 <- getAbrevJung(t_handle2, token)
+isCompatable <- function(t_handle1, t_handle2){
+  person1 <- getAbrevJung(t_handle1)
+  person2 <- getAbrevJung(t_handle2)
   df <- getCompatabilityTable()
   result <- as.character(df[person1, person2])
   return(result)

@@ -2,9 +2,9 @@
 library(knitr)
 
 #Separates each character of a twitter accounts Jugian value and puts it into a data frame
-getJungian <- function(t_handle, token){
+getJungian <- function(t_handle){
   
-  personality <- getAbrevJung(t_handle, token)
+  personality <- getAbrevJung(t_handle)
 
   personality_split <- strsplit(personality, "")[[1]]
   if(identical(personality_split[1], "I")){ 
@@ -39,8 +39,8 @@ getJungian <- function(t_handle, token){
 }
 
 # Creates a twitter users Jungian value
-getAbrevJung <- function(t_handle, token){
-  interpretations <- GetIntDF(GetData(t_handle, token))
+getAbrevJung <- function(t_handle){
+  interpretations <- GetIntDF(GetData(t_handle))
   personality <- as.character(interpretations[1, "value"]) 
   
   return(personality)

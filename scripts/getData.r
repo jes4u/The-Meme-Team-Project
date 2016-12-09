@@ -18,11 +18,10 @@ library(twitteR)
                     body=tweets)
     print(request$status_code)
     if (request$status_code != 200) {
-      ###Redundant, find more elegant solution###
       ams_auth_req <- POST("http://api-v2.applymagicsauce.com/auth/", 
                            add_headers("Content-Type"="application/json"), 
-                           body = '{"customer_id": 2598, 
-                                    "api_key": "pj3uu3gsj64p4vc7pa8q8t2vgk"}')
+                           body = '{"customer_id": 2557, 
+                                    "api_key": "hb2r82i8saloj1ectsfsi5omlq"}')
       token <- httr::content(ams_auth_req)$token
       request <- RequestAMS(token, tweets)
     }
@@ -30,9 +29,9 @@ library(twitteR)
   }
   
   #Get data for a user
-  GetData <- function(user, token) {
+  GetData <- function(user) {
     tweets <- GetTweets(user)
-    resp <- RequestAMS(token, tweets)
+    resp <- RequestAMS(tweets=tweets)
     return(resp)
   }
   
